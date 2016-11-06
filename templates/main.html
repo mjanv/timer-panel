@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+	<script type=text/javascript>
+	  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+	<script type="text/javascript">
+		    function updateTime() {
+		    var currentTime = new Date();
+		    var hours = currentTime.getHours();
+		    var minutes = currentTime.getMinutes();
+		    var seconds = currentTime.getSeconds();
+		    if (minutes < 10){
+		    minutes = "0" + minutes;
+		    }
+		    if (seconds < 10){
+		    seconds = "0" + seconds;
+		    }
+		    var v = hours + "h " + minutes + "m " + seconds + "s";
+
+		    setTimeout("updateTime()", 1000);
+		    {% for n in range(4) %}
+		    document.getElementById('time{{ n }}').innerHTML = v;
+		    {% endfor %}
+		    }
+		    updateTime();
+	</script>	
+</head>
+
+<body>
+	{% for n in range(4) %}
+		<div class="full-size color{{ n }}" style="height:{{ 100 / 4 }}vh;">
+			Vague #{{ n + 1 }}:&nbsp;&nbsp;<span id="time{{ n }}"/>
+		</div>
+	{% endfor %}
+		
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
