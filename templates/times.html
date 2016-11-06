@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+</head>
+
+<body>
+	{% for t in times %}
+		<p>{{ t.strftime('%H:%M:%S') }}</p>
+	{% endfor %}
+	<form action="" method="post" name="set">
+		Set a new time <input type="text" name="hours">:<input type="text" name="minuts">:<input type="text" name="seconds"><input type="submit" value="Submit">
+	</form>
+</body>
+</html>
