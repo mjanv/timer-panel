@@ -7,11 +7,20 @@
 </head>
 
 <body>
+        <h1>Availables times</h1>
+        {% if times %}
+        <ul>
 	{% for t in times %}
-		<p>{{ t.strftime('%H:%M:%S') }}</p>
+		<li>{{ t.strftime('%H:%M:%S') }}</li>
 	{% endfor %}
+        </ul>
+        {% else %}
+        No start time(s) set !<br \><br \>
+        {% endif %}
 	<form action="" method="post" name="set">
-		Set a new time <input type="text" name="hours">:<input type="text" name="minuts">:<input type="text" name="seconds"><input type="submit" value="Submit">
+		Set a new time <input type="text" name="hours">:<input type="text" name="minuts">:<input type="text" name="seconds">
+		<input type="submit" name="click" value="Submit">
+		<input type="submit" name="click" value="Delete All">
 	</form>
 </body>
 </html>
