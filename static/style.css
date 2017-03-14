@@ -9,13 +9,17 @@ h1 {
     color: black;
 }
 
+a {
+    color: white;
+}
+
 .full-size{
   width:100%;
 
   overflow:hidden; /* or overflow:auto; if you want scrollbars */
   background-color: yellow;
   text-align: center;
-  font-size:7vw;
+  font-size:8vw;
   color: white;
 
 	display: flex;
@@ -26,22 +30,26 @@ h1 {
 }
 
 .color0 {
-	background-color: red;
+	background-color: black;
 }
 
 .color1 {
-	background-color: #9900cc;	
+	background-color: red;
 }
 
 .color2 {
-	background-color: green;
+	background-color: #9900cc;	
 }
 
 .color3 {
-	background-color: #ffcc00;
+	background-color: green;
 }
 
 .color4 {
+	background-color: #ffcc00;
+}
+
+.color5 {
 	background-color: #6699ff;
 }
 

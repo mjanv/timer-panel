@@ -1,47 +1,45 @@
 <!doctype html>
 <html>
-<head>
-<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet"> 
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-	<script type=text/javascript>
-	  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-	</script>
-        {% if starts %}
-	{% for start in starts %}	
-		<script type="text/javascript">
-			    function updateTime{{ loop.index }}() {
-			    var currentTime = new Date();
-                            var somme = (currentTime.getSeconds() - {{ start.second }}) + 60*(currentTime.getMinutes() - {{ start.minute }}) -  3600*(currentTime.getHours() - {{ start.hour }});
-			    var hours = Math.floor(somme / 3600);
-			    var minutes = Math.floor((somme / 60) % 60);
-		            var seconds = Math.floor(somme % 60);
-
-			    if (minutes < 10){ minutes = "0" + minutes; }
-			    if (seconds < 10){ seconds = "0" + seconds; }
-			    var v = hours + "h " + minutes + "m " + seconds + "s";
-
-			    setTimeout("updateTime{{ loop.index }}()", 1000);
-
-			    	document.getElementById('time{{ loop.index - 1 }}').innerHTML = v;
-			    
-			    }
-			    updateTime{{ loop.index }}();
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet"> 
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+		<script type=text/javascript>
+			$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 		</script>
-	{% endfor %}
-        {% endif %}	
-</head>
+		{% if starts %}
+			{% for start in starts %}	
+			<script type="text/javascript">
+				function updateTime{{ loop.index }}() {
+					var currentTime = new Date();
+					var somme = (currentTime.getSeconds() - {{ start.second }}) + 60*(currentTime.getMinutes() - {{ start.minute }}) + 3600*(currentTime.getHours() - {{ start.hour }});
+					var hours = Math.floor(somme / 3600);
+					var minutes = Math.floor((somme / 60) % 60);
+					var seconds = Math.floor(somme % 60);
 
-<body>
-        {% if starts %}
-	{% for n in range(starts | length) %}
-		<div class="full-size color{{ n }}" style="height:{{ 100 / (starts | length) }}vh;">
-			Vague {{ n + 1 }}:&nbsp;&nbsp;<span id="time{{ n }}"/>
-		</div>
-	{% endfor %}
-        {% else %}
-		<div class="full-size color0" style="height:100vh;">No chrono, duh!</div>
-        {% endif %}
-		
-<script src="static/jquery.min.js"></script>
-</body>
+					if (minutes < 10){ minutes = "0" + minutes; }
+					if (seconds < 10){ seconds = "0" + seconds; }
+					var v = hours + "h " + minutes + "m " + seconds + "s";
+
+					setTimeout("updateTime{{ loop.index }}()", 1000);
+					document.getElementById('time{{ loop.index - 1 }}').innerHTML = v;
+				}
+				updateTime{{ loop.index }}();
+			</script>
+			{% endfor %}
+		{% endif %}	
+	</head>
+
+	<body>
+		{% if starts %}
+                        <div class="color1" style="height:2vh;"><a href="/">...</a></div>
+			{% for n in range(starts | length) %}
+				<div class="full-size color{{ n + 1 }}" style="height:{{ 98 / (starts | length) }}vh;">
+				Vague {{ n + 1 }}:&nbsp;&nbsp;<span id="time{{ n }}"/></div>
+			{% endfor %}
+		{% else %}
+			<div class="full-size color0" style="height:100vh;"><a href="/times">Set a first timer</a></div>
+		{% endif %}
+
+		<script src="static/jquery.min.js"></script>
+	</body>
 </html>
