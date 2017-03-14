@@ -11,7 +11,7 @@
 		<script type="text/javascript">
 			    function updateTime{{ loop.index }}() {
 			    var currentTime = new Date();
-                            var somme = (currentTime.getSeconds() - {{ start.second }}) + 60*(currentTime.getMinutes() - {{ start.minute }}) -  60*60*(currentTime.getHours() - {{ start.hour }});
+                            var somme = (currentTime.getSeconds() - {{ start.second }}) + 60*(currentTime.getMinutes() - {{ start.minute }}) -  3600*(currentTime.getHours() - {{ start.hour }});
 			    var hours = Math.floor(somme / 3600);
 			    var minutes = Math.floor((somme / 60) % 60);
 		            var seconds = Math.floor(somme % 60);
