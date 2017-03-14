@@ -25,4 +25,4 @@ def times():
 
 if __name__ == "__main__":
     app.secret_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(10))
-    app.run()
+    app.run(debug=True)
