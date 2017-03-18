@@ -11,7 +11,10 @@ import string
 app = Flask(__name__)
 
 def get_start(hours, minuts, seconds):
-    return [datetime.now().replace(hour = int(hours), minute = int(minuts), second = int(seconds))]  
+    start = datetime.now().replace(hour = int(hours), minute = int(minuts), second = int(seconds))
+    if start > datetime.now():
+        return []
+    return [start]  
 
 @app.route("/")
 def hello(): 

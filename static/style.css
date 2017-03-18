@@ -13,43 +13,43 @@ a {
     color: white;
 }
 
-.full-size{
-  width:100%;
+@font-face {
+	font-family: 'clock';
+	src: url('alarm_clock.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 
-  overflow:hidden; /* or overflow:auto; if you want scrollbars */
-  background-color: yellow;
-  text-align: center;
-  font-size:8vw;
-  color: white;
+div {
+	font-family: Verdana, cursive;
+}
+
+.full-size{
+	width:100%;
+
+	overflow:hidden;
+	text-align: center;
+	font-size:12vw;
+	color: white;
 
 	display: flex;
-	justify-content: center; /* align horizontal */
-	align-items: center; /* align vertical */  
+	justify-content: center;
+	align-items: center; 
 
-	font-family: 'Alfa Slab One', cursive;	
+	font-family: 'clock', cursive;	
 }
 
 .color0 {
 	background-color: black;
 }
 
-.color1 {
-	background-color: red;
+.color1, .color3, .color5 {
+	background-color: #140023;
+    color: white;
 }
 
-.color2 {
-	background-color: #9900cc;	
-}
-
-.color3 {
-	background-color: green;
-}
-
-.color4 {
-	background-color: #ffcc00;
-}
-
-.color5 {
-	background-color: #6699ff;
+.color2, .color4, .color6 {
+	background-color: #540093;	
+    color: white;
 }
 
