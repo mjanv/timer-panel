@@ -35,10 +35,10 @@
 				<a href="/" style="font-size: 3vw; text-decoration: none;">Temps non officiel</a>
 			</div>
 			{% for n in range(starts | length) %}
-				<div class="color{{ n + 1 }}" style="font-size:2vw;height:2vh;">
-				Vague {{ n + 1 }}
+				<div class="color{{ n + 1 }}" style="font-size:3vw;height:4vh;">
+				{{ names[loop.index0] }}
 				</div>
-				<div class="full-size color{{ n + 1 }}" style="font-size:{{ 23 - (starts | length) }}vw;height:{{ (90 / (starts | length)) - 2 }}vh;">
+				<div class="full-size color{{ n + 1 }}" style="font-size:{{ 23 - 2.5*(starts | length) }}vw;height:{{ (90 / (starts | length)) - 4 }}vh;">
 					<span id="time{{ n }}"/>
 				</div>
 			{% endfor %}

@@ -11,14 +11,14 @@
         {% if times %}
         <ul>
 	{% for t in times %}
-		<li>{{ t.strftime('%H:%M:%S') }}</li>
+		<li>{{ names[loop.index0] }} - {{ t.strftime('%H:%M:%S') }}</li>
 	{% endfor %}
         </ul>
         {% else %}
         No start time(s) set !<br \><br \>
         {% endif %}
 	<form action="" method="post" name="set">
-		Set a new time <input type="text" name="hours">:<input type="text" name="minuts">:<input type="text" name="seconds">
+		Set a new time <input type="text" name="name">//<input type="text" name="hours">:<input type="text" name="minuts">:<input type="text" name="seconds">
 		<input type="submit" name="click" value="Submit">
 		<input type="submit" name="click" value="Delete All">
 	</form>

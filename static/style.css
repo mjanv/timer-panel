@@ -28,8 +28,7 @@ div {
 	width:100%;
 
 	overflow:hidden;
-	text-align: center;
-	font-size:12vw;
+	text-align: right;
 	color: white;
 
 	display: flex;
